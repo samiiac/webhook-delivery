@@ -5,14 +5,14 @@ export const redisConnection = {
   host: process.env.REDIS_HOST || "localhost",
   port: Number(process.env.PORT) || 6379,
 };
-export interface webHookJobData {
+export interface WebHookJobData {
   eventId: string;
   endpointId: string;
   destinationURL: string;
   payload: Record<string, unknown>;
-  signature: string;
+  secret: string;
 }
-export const hookQueue = new Queue<webHookJobData>("hook-queue", {
+export const hookQueue = new Queue<WebHookJobData>("hook-queue", {
   connection: redisConnection,
   defaultJobOptions: {
     attempts: 5,

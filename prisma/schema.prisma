@@ -19,7 +19,7 @@ enum HookDeliveryStatus {
 model Endpoint {
   id           String     @id @default(uuid())
   destUrl      String
-  signature    String
+  secret   String
   subscribedTo String[]
   isActive     Boolean
   eventLogs    EventLog[]
